@@ -1,11 +1,14 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Passport {
@@ -18,6 +21,7 @@ public class Passport {
 	private String number;
 
 	@OneToOne(mappedBy = "passport")
+	@JsonBackReference
 	private Student student;
 
 	protected Passport() {

@@ -1,5 +1,6 @@
 package com.example.demo.api.v1;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import com.example.demo.service.CourseService;
 import com.example.demo.service.StudentService;
 
 @RestController
-@RequestMapping(value = "Student")
+@RequestMapping(value = "Students")
 public class StudentController {
 
 	@Autowired
@@ -46,4 +47,8 @@ public class StudentController {
 		return studentService.save(s);
 	}
 
+	@GetMapping("All")
+	public List<Student> getAll() {
+		return studentService.getAll();
+	}
 }

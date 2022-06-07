@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -29,7 +29,8 @@ public class Course {
 	@JsonManagedReference
 	private List<Review> reviews;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "enrolledCourses")
+	@JsonBackReference
 	private List<Student> students;
 
 	protected Course() {
@@ -54,8 +55,6 @@ public class Course {
 	public List<Review> getReviews() {
 		return reviews;
 	}
-	
-	
 
 	public List<Student> getStudents() {
 		return students;
@@ -72,5 +71,7 @@ public class Course {
 	public void removeReview(Review review) {
 		this.reviews.remove(review);
 	}
+	
+	
 
 }

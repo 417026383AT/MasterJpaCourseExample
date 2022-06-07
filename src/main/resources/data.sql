@@ -16,3 +16,5 @@ INSERT INTO student(id, name, passport_id) VALUES('103', 'Jane', '40003');
 INSERT INTO review(id, rating, description, course_id) VALUES('50001', '5', 'Great Course', '101');
 INSERT INTO review(id, rating, description, course_id) VALUES('50002', '4', 'Good', '101');
 INSERT INTO review(id, rating, description, course_id) VALUES('50003', '1', 'Bad Course', '102');
+
+INSERT INTO courses_students(student_id, course_id) VALUES ('101','102');

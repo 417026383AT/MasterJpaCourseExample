@@ -14,7 +14,7 @@ import com.example.demo.model.Course;
 import com.example.demo.service.CourseService;
 
 @RestController
-@RequestMapping(value = "Course", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "Courses", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CourseController {
 
 	@Autowired
