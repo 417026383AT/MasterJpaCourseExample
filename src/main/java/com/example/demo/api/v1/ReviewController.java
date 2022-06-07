@@ -14,7 +14,7 @@ import com.example.demo.model.Review;
 import com.example.demo.service.ReviewService;
 
 @RestController
-@RequestMapping(value = "Review", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "Reviews", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ReviewController {
 
 	@Autowired
