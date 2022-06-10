@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Course;
 import com.example.demo.model.Review;
+import com.example.demo.model.Student;
 import com.example.demo.repository.CourseRepo;
 import com.example.demo.repository.ReviewRepo;
 
@@ -41,6 +43,11 @@ public class CourseService {
 			throw new RuntimeException("Could not delete. Course was not found.");
 		}
 
+	}
+
+	@Transactional
+	public List<Course> getAllEmptyCourses() {
+		return (List<Course>) courseRepo.findAllCoursesWithoutStudents();
 	}
 
 }

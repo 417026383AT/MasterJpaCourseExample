@@ -51,4 +51,14 @@ public class StudentController {
 	public List<Student> getAll() {
 		return studentService.getAll();
 	}
+
+	@GetMapping("/{studentId}/Courses")
+	public List<Course> getStudentCourses(@PathVariable String studentId) {
+		Optional<Student> stud = studentService.findByI(studentId);
+		if (stud.isPresent())
+			return stud.get().getEnrolledCourses();
+		else
+			throw new RuntimeException("Student with id: " + studentId + " was not found.");
+	}
+
 }

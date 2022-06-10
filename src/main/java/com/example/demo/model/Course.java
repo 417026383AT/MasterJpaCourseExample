@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -29,8 +31,11 @@ public class Course {
 	@JsonManagedReference
 	private List<Review> reviews;
 
-	@ManyToMany(mappedBy = "enrolledCourses")
-	@JsonBackReference
+	@ManyToMany
+	@JsonManagedReference
+	// @JoinTable(name = "students_courses", joinColumns = @Join(name =
+	// "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
+	@JoinTable(name = "students_courses", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
 	private List<Student> students;
 
 	protected Course() {
@@ -71,7 +76,5 @@ public class Course {
 	public void removeReview(Review review) {
 		this.reviews.remove(review);
 	}
-	
-	
 
 }

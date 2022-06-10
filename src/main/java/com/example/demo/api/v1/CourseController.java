@@ -1,6 +1,7 @@
 package com.example.demo.api.v1;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Course;
+import com.example.demo.model.Student;
 import com.example.demo.service.CourseService;
 
 @RestController
@@ -41,6 +43,11 @@ public class CourseController {
 			courseService.deleteById(courseId);
 		else
 			throw new RuntimeException("Course with id: " + courseId + " was not found.");
+	}
+
+	@GetMapping("Empty")
+	public List<Course> getEmptyCourses() {
+		return courseService.getAllEmptyCourses();
 	}
 
 }
